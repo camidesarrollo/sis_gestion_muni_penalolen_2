@@ -679,6 +679,7 @@
                         orderable: true,
                         searchable: true,
                     },
+                    
                     {
                         data: "Confidencial",
                         name: "Confidencial",
