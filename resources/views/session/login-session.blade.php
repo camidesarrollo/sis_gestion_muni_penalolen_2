@@ -19,10 +19,18 @@
                     @if($errors->any())
                         <div class="mt-3  alert alert-primary alert-dismissible fade show" role="alert">
                             <span class="alert-text text-white">
+                            
                             @error('error')
                               {{ $message }}
                             @enderror
+
+                            @error('email')
+                              {{ $message }}
+                            @enderror
                            
+                            @error('password')
+                              {{ $message }}
+                            @enderror
                           </span>
                       
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">

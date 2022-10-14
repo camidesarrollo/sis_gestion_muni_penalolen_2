@@ -13,13 +13,14 @@
     height: calc(100vh - 100px);
 ">
     <ul class="navbar-nav sidebar-database">
-    <?php
+        <?php
           recursivosTreePage(session()->get('menu'));
 
           function recursivosTreePage($data){
             // count(session()->get('menu'))
-            
-            for ($i = 0; $i < count($data); $i++) {
+            if (is_countable($data) && count($data) > 0) {
+              
+              for ($i = 0; $i < count((array)$data); $i++) {
                 if($data[$i]['tipo'] == 'Menu'){
                     padrePage($data[$i]);
                 }else{
@@ -27,7 +28,9 @@
                    
                 }
 
+              }
             }
+
 
           }
         ?> 

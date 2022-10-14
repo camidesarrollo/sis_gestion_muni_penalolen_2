@@ -51,7 +51,6 @@ class SessionsController extends Controller
                 History::createHistory($data);
 
                 $menu = Menu::select('menus.*')->join('rols_menu', 'menus.id', '=', 'rols_menu.id_menu')
-                ->join('users', 'rols_menu.id_role', '=', 'users.rol_id' )
                 ->where('rols_menu.id_role', '=', Auth::user()->rol_id)
                 ->where('menus.vigencia_id', '=', 1)
                 ->orderBy('orden', 'ASC')->get()->toArray();

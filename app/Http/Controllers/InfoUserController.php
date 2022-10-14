@@ -306,7 +306,8 @@ class InfoUserController extends Controller
 
     function changeContrasena(Request $request){
         try {
-			
+
+
             if($request->id_usuario == null || $request->id_usuario == '' || $request->cont == null || $request->cont == ''){
                 return response()->json(array('estado' => '0', 'mensaje' => 'Error: Existen datos no ingresados, intentelo nuevamente!'), 200);
             }
@@ -320,7 +321,7 @@ class InfoUserController extends Controller
 
             
             $user->password = Hash::make($request->cont);
-            $usuario->timestamps = $fecha->getTimestamp();
+            $user->timestamps = $fecha->getTimestamp();
             $user->save();
 
 
@@ -329,7 +330,7 @@ class InfoUserController extends Controller
             $data = new stdClass();
             $data->id_usuario = Auth::user()->id;
             $data->acción = 'Editar';
-            $data->descripcion = 'El usuario '+Auth::user()->id+' ha realizado cambio de clave';      
+            $data->descripcion = 'El usuario '.Auth::user()->id.' ha realizado cambio de clave';      
             $data->timestamps = $fecha->getTimestamp();
             
             History::createHistory($data);

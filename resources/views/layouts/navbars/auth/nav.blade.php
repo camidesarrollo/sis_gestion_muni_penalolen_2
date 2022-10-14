@@ -37,9 +37,12 @@
                 </a>
             </li>
             <li class="nav-item px-3 d-flex align-items-center">
-                <!-- <a href="javascript:;" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                </a> -->
+                <a class="border-radius-md" href="{{ url('perfil') }}">
+                            <h6 class="text-sm font-weight-normal mb-1">
+                                {{ Auth::user()->name }} {{Auth::user()->ap_paterno}} {{Auth::user()->ap_materno}}
+                            </h6> 
+                
+                </a>
             </li>
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
                 <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">

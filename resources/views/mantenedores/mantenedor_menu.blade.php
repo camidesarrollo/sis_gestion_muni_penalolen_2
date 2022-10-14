@@ -171,6 +171,7 @@
                                     required
                                     {{ $disableEscribir}}
                                 ></select>
+                                
                                 <div class="invalid-feedback">
                                     Por favor, Seleccione el perfil.
                                 </div>
@@ -396,17 +397,16 @@
     $(document).ready(function () {
 
         @if(session()->get('privilegios')->leer == 1)
+            @if(session()->get('privilegios')->escribir == 1)
+                getRol();
+                getMenuPadre();
+            @endif
         getMenu();
         menuTree();
-        getRol();
         @else
             alert('El usuario no tiene los permisos suficientes para ver la información')
         @endif
 
-        @if(session()->get('privilegios')->escribir == 1)
-            getRol();
-            getMenuPadre();
-        @endif
     });
 
     function getOrden(padre, orden = null){
@@ -826,13 +826,10 @@
             type: "get",
         })
             .done(function (resp) {
-                $.each(resp, function (i, item) {
-                    $("#perfil_select").append(
-                        $("<option>", {
-                            value: item.id,
-                            text: item.name,
-                        })
-                    );
+                var options = $("#perfil_select");
+                $.each(resp, function(key, val) {
+                    console.log(val);
+                    options.append(new Option(val.name, val.id));
                 });
                 $("#perfil_select").multipleSelect();
             })
